@@ -20,7 +20,7 @@ public class MySharedPreferences implements SharedPreferences {
 		_sharedPreferences = prefs;
 	}
 	
-	public MySharedPreferences getSharedPreferences(String name, int mode){
+	public static MySharedPreferences getSharedPreferences(String name, int mode){
 		return new MySharedPreferences(AppContext.getContext().getSharedPreferences(name, mode));
 	}
 	
@@ -30,7 +30,7 @@ public class MySharedPreferences implements SharedPreferences {
 	}
 
 	@Override
-	public Editor edit() {
+	public MyEditor edit() {
 		return new MyEditor(_sharedPreferences.edit());
 	}
 
