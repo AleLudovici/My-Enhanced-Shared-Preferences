@@ -76,7 +76,7 @@ public class MyEditor implements SharedPreferences.Editor {
 	
 	// Extend editor
 	public Editor putDouble(String key, double value){
-		return _editor.putFloat(key, Double.doubleToRawLongBits(value));
+		return _editor.putLong(key, Double.doubleToRawLongBits(value));
 	}
 	
 	public Editor putJson(String key, JSONObject value){

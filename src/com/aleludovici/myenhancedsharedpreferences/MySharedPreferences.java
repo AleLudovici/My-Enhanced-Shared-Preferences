@@ -13,9 +13,9 @@ import android.os.Build;
 
 @SuppressLint("CommitPrefEdits")
 public class MySharedPreferences implements SharedPreferences {
-	
+
 	private SharedPreferences _sharedPreferences;
-	
+
 	private MySharedPreferences(SharedPreferences prefs){
 		_sharedPreferences = prefs;
 	}
@@ -23,7 +23,7 @@ public class MySharedPreferences implements SharedPreferences {
 	public static MySharedPreferences getSharedPreferences(String name, int mode){
 		return new MySharedPreferences(AppContext.getContext().getSharedPreferences(name, mode));
 	}
-	
+
 	@Override
 	public boolean contains(String key) {
 		return _sharedPreferences.contains(key);
@@ -79,14 +79,14 @@ public class MySharedPreferences implements SharedPreferences {
 	@Override
 	public void unregisterOnSharedPreferenceChangeListener(
 			OnSharedPreferenceChangeListener listener) {
-		_sharedPreferences.registerOnSharedPreferenceChangeListener(listener);
+		_sharedPreferences.unregisterOnSharedPreferenceChangeListener(listener);
 	}
-	
+
 	// extend
 	public double getDouble(String key, double defValue){
 		return Double.longBitsToDouble(_sharedPreferences.getLong(key, Double.doubleToRawLongBits(defValue)));
 	}
-	
+
 	public JSONObject getJson(String key, JSONObject defValue) throws JSONException{
 		return new JSONObject(_sharedPreferences.getString(key, defValue.toString()));
 	}
